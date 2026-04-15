@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CurtailmentIQ Hub  Revenue Assurance & Grid Intelligence Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+
+:root{
+  --dark:#0A0F5C;
+  --dark2:#0D1468;
+  --dark3:#14196E;
+  --grad-start:#2B0A6F;
+  --grad-end:#0A0F5C;
+  --purple:#6C4BFF;
+  --purple2:#8B6FFF;
+  --white:#FFFFFF;
+  --offwhite:#F0F4FF;
+  --muted:#C9C9F0;
+  --border:rgba(108,75,255,0.3);
+}
+
+body{font-family:'DM Sans',sans-serif;background:var(--grad-end);color:var(--white);overflow-x:hidden;}
+
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--dark);}
+::-webkit-scrollbar-thumb{background:var(--purple);border-radius:3px;}
+
+/* ══ NAVBAR ══ */
+.navbar{
+  width:100%;background:rgba(10,15,92,0.96);
+  padding:14px 8%;position:fixed;top:0;left:0;z-index:1000;
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);
+}
+.nav-container{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--purple);letter-spacing:2px;}
+.logo span{color:var(--white);}
+
+#navMenu{display:flex;gap:32px;align-items:center;}
+#navMenu a{
+  text-decoration:none;color:var(--offwhite);font-size:14px;font-weight:500;
+  position:relative;transition:color 0.3s;
+}
+#navMenu a::after{
+  content:"";position:absolute;left:0;bottom:-4px;
+  width:0%;height:2px;background:var(--purple);transition:0.3s;
+}
+#navMenu a:hover{color:var(--purple2);}
+#navMenu a:hover::after{width:100%;}
+
+.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.menu-toggle span{width:26px;height:2px;background:var(--purple);display:block;transition:0.3s;}
+
+@media(max-width:900px){
+  #navMenu{
+    position:absolute;top:68px;left:0;width:100%;
+    background:var(--dark2);flex-direction:column;
+    padding:28px 0;gap:22px;display:none;
+    border-bottom:1px solid var(--border);
+  }
+  #navMenu.active{display:flex;}
+  .menu-toggle{display:flex;}
+}
+
+/* ══ HERO ══ */
+.hero-section{
+  position:relative;padding:150px 8% 110px;
+  background:linear-gradient(135deg,var(--grad-start) 0%,var(--grad-end) 100%);
+  overflow:hidden;
+}
+.hero-section::before{
+  content:"";position:absolute;top:-80px;right:-80px;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(108,75,255,0.22) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-section::after{
+  content:"";position:absolute;bottom:-100px;left:-100px;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(43,10,111,0.7) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-container{
+  max-width:1200px;margin:auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:70px;align-items:center;position:relative;z-index:2;
+}
+.hero-badge{
+  display:inline-block;background:rgba(108,75,255,0.15);
+  border:1px solid var(--purple);color:var(--purple2);
+  padding:6px 16px;border-radius:30px;font-size:12px;
+  font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  margin-bottom:20px;
+}
+.hero-left h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:58px;color:var(--white);line-height:1.05;
+  margin-bottom:10px;letter-spacing:1px;
+}
+.hero-left h1 span{color:var(--purple2);}
+.hero-divider{width:70px;height:3px;background:var(--purple);margin:18px 0 22px;}
+.hero-text{color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:35px;max-width:500px;}
+.hero-buttons{display:flex;gap:16px;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--purple);color:var(--white);
+  padding:14px 30px;border-radius:6px;
+  text-decoration:none;font-weight:700;font-size:15px;
+  transition:background 0.3s,transform 0.2s;display:inline-block;
+}
+.btn-primary:hover{background:var(--purple2);transform:translateY(-2px);}
+.btn-secondary{
+  border:2px solid var(--purple);color:var(--purple2);
+  padding:13px 28px;border-radius:6px;
+  text-decoration:none;font-weight:600;font-size:15px;
+  transition:all 0.3s;display:inline-block;
+}
+.btn-secondary:hover{background:rgba(108,75,255,0.12);}
+.hero-img-wrap{position:relative;}
+.hero-img-wrap img{
+  width:100%;border-radius:14px;
+  box-shadow:0 30px 60px rgba(0,0,0,0.5),0 0 0 1px rgba(108,75,255,0.25);
+}
+.hero-img-wrap::before{
+  content:"";position:absolute;inset:-3px;border-radius:16px;
+  background:linear-gradient(135deg,rgba(108,75,255,0.35),transparent,rgba(43,10,111,0.5));
+  z-index:-1;
+}
+
+@media(max-width:900px){
+  .hero-section{padding:110px 6% 80px;}
+  .hero-container{grid-template-columns:1fr;gap:40px;text-align:center;}
+  .hero-left h1{font-size:36px;}
+  .hero-divider{margin:16px auto 20px;}
+  .hero-text{max-width:100%;font-size:15px;}
+  .hero-buttons{justify-content:center;}
+}
+
+/* ══ SECTION UTILITIES ══ */
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--purple2);letter-spacing:1px;}
+.section-divider{width:70px;height:3px;background:var(--purple);margin:12px auto 20px;}
+.section-sub{max-width:660px;margin:0 auto 60px;color:var(--muted);line-height:1.7;font-size:16px;text-align:center;}
+
+/* ══ ABOUT ══ */
+.about-section{padding:130px 8%;background:rgba(43,10,111,0.5);}
+.about-container{
+  max-width:1100px;margin:auto;
+  display:grid;grid-template-columns:1.3fr 1fr;
+  gap:80px;align-items:center;
+}
+.about-left .section-title{text-align:left;}
+.about-divider{width:70px;height:3px;background:var(--purple);margin:12px 0 24px;}
+.about-left p{color:var(--muted);line-height:1.8;margin-bottom:20px;font-size:16px;}
+.about-features{
+  margin-top:28px;display:grid;
+  grid-template-columns:repeat(2,1fr);gap:12px;
+}
+.feature{
+  background:rgba(108,75,255,0.12);
+  border:1px solid rgba(108,75,255,0.35);
+  color:var(--white);padding:11px 15px;
+  border-radius:7px;font-size:14px;font-weight:600;
+  transition:0.3s;
+}
+.feature:hover{background:rgba(108,75,255,0.22);}
+.founder-box{
+  background:rgba(255,255,255,0.05);
+  border:1px solid var(--border);
+  padding:38px;border-radius:14px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.4);
+}
+.founder-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:28px;color:var(--purple2);margin-bottom:6px;letter-spacing:1px;
+}
+.founder-divider{width:55px;height:3px;background:var(--purple);margin-bottom:18px;}
+.founder-box p{color:var(--muted);line-height:1.7;margin-bottom:16px;font-size:15px;}
+.founder-box p strong{color:var(--white);}
+.linkedin-btn{
+  display:inline-block;padding:11px 22px;
+  background:var(--purple);color:var(--white);
+  text-decoration:none;border-radius:6px;font-weight:700;
+  transition:background 0.3s;
+}
+.linkedin-btn:hover{background:var(--purple2);}
+
+@media(max-width:900px){
+  .about-section{padding:80px 6%;}
+  .about-container{grid-template-columns:1fr;gap:50px;text-align:center;}
+  .about-left .section-title{text-align:center;}
+  .about-divider{margin:12px auto 22px;}
+  .about-features{grid-template-columns:1fr 1fr;}
+  .feature{text-align:center;}
+  .founder-box{padding:28px;}
+  .founder-divider{margin-left:auto;margin-right:auto;}
+}
+
+/* ══ PROCESS ══ */
+.process-section{
+  padding:130px 8%;background:linear-gradient(180deg,var(--grad-end) 0%,var(--grad-start) 100%);text-align:center;
+  position:relative;overflow:hidden;
+}
+.process-section::before{
+  content:"";position:absolute;top:0;right:0;
+  width:250px;height:250px;
+  background:var(--purple);clip-path:polygon(100% 0,0 0,100% 100%);
+  opacity:0.06;
+}
+.process-section::after{
+  content:"";position:absolute;bottom:0;left:0;
+  width:250px;height:250px;
+  background:var(--purple);clip-path:polygon(0 100%,0 0,100% 100%);
+  opacity:0.06;
+}
+.process-container{max-width:1200px;margin:auto;position:relative;z-index:2;}
+.process-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:0;
+}
+.process-card{
+  background:rgba(255,255,255,0.05);padding:26px;border-radius:12px;
+  border:1px solid rgba(255,255,255,0.08);
+  border-top:4px solid var(--purple);text-align:left;
+  transition:0.35s;
+}
+.process-card:hover{transform:translateY(-8px);box-shadow:0 25px 50px rgba(108,75,255,0.15);}
+.process-img{width:100%;height:148px;object-fit:cover;border-radius:8px;margin-bottom:16px;}
+.step-badge{
+  display:inline-block;background:var(--purple);color:var(--white);
+  font-size:12px;font-weight:700;padding:5px 13px;border-radius:4px;margin-bottom:12px;
+  letter-spacing:1px;
+}
+.process-card h3{margin-bottom:10px;color:var(--white);font-size:17px;}
+.process-card p{color:var(--muted);font-size:14px;line-height:1.65;}
+
+@media(max-width:1100px){.process-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){
+  .process-section{padding:80px 6%;}
+  .section-title{font-size:32px;}
+  .process-grid{grid-template-columns:1fr;}
+}
+
+/* ══ PLATFORM ══ */
+.platform-section{padding:130px 8%;background:rgba(43,10,111,0.55);text-align:center;}
+.platform-container{max-width:1200px;margin:auto;}
+.platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.platform-card{
+  background:rgba(10,15,92,0.7);padding:28px;border-radius:12px;
+  border:1px solid rgba(255,255,255,0.07);
+  border-top:4px solid var(--purple);text-align:left;
+  transition:0.35s;
+}
+.platform-card:hover{transform:translateY(-8px);box-shadow:0 25px 50px rgba(108,75,255,0.15);}
+.platform-img{
+  width:100%;height:155px;object-fit:cover;
+  border-radius:8px;margin-bottom:16px;
+}
+.platform-card h3{color:var(--white);margin-bottom:8px;font-size:17px;}
+.short-text{color:var(--purple2);font-weight:600;font-size:14px;margin-bottom:10px;}
+.more-text{color:var(--muted);font-size:14px;line-height:1.65;display:none;margin-bottom:14px;}
+.learn-btn{
+  background:transparent;border:1px solid var(--purple);color:var(--purple2);
+  padding:8px 18px;border-radius:5px;cursor:pointer;
+  font-size:13px;font-weight:600;transition:0.3s;
+  font-family:'DM Sans',sans-serif;
+}
+.learn-btn:hover{background:var(--purple);color:var(--white);}
+
+@media(max-width:1100px){.platform-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){
+  .platform-section{padding:80px 6%;}
+  .platform-grid{grid-template-columns:1fr;}
+}
+
+/* ══ PRICING ══ */
+.pricing-section{padding:130px 8%;background:linear-gradient(135deg,var(--grad-start) 0%,var(--grad-end) 100%);text-align:center;}
+.pricing-container{max-width:1100px;margin:auto;}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.price-card{
+  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);
+  padding:40px 32px;border-radius:14px;text-align:center;
+  transition:0.35s;position:relative;overflow:hidden;
+}
+.price-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--purple);
+}
+.price-card.featured{
+  border-color:var(--purple);
+  box-shadow:0 0 0 1px rgba(108,75,255,0.45),0 30px 60px rgba(108,75,255,0.15);
+}
+.price-card.featured::before{height:6px;}
+.popular-badge{
+  display:inline-block;background:var(--purple);color:var(--white);
+  font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;
+  margin-bottom:16px;letter-spacing:1px;
+}
+.price-card h3{font-size:20px;color:var(--white);margin-bottom:8px;}
+.price-amount{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--purple2);line-height:1;}
+.price-period{color:var(--muted);font-size:14px;margin-bottom:24px;}
+.price-card ul{list-style:none;margin:20px 0 30px;text-align:left;}
+.price-card li{
+  margin:10px 0;color:var(--muted);font-size:14px;padding-left:20px;position:relative;
+}
+.price-card li::before{content:"✓";color:var(--purple2);position:absolute;left:0;font-weight:700;}
+.price-btn{
+  display:block;padding:13px;background:var(--purple);color:var(--white);
+  border-radius:7px;text-decoration:none;font-weight:700;transition:0.3s;
+}
+.price-btn:hover{background:var(--purple2);}
+.price-card:hover{transform:translateY(-6px);}
+
+@media(max-width:900px){
+  .pricing-grid{grid-template-columns:1fr;}
+  .pricing-section{padding:80px 6%;}
+}
+
+/* ══ FAQ ══ */
+.faq-section{padding:130px 8%;background:rgba(43,10,111,0.5);}
+.faq-container{max-width:850px;margin:auto;}
+.faq-section .section-title,.faq-section .section-sub{text-align:center;}
+.faq-section .section-divider{margin:12px auto 20px;}
+.faq-item{
+  border-bottom:1px solid rgba(255,255,255,0.07);
+  padding:20px 0;
+}
+.faq-question{
+  display:flex;justify-content:space-between;align-items:center;
+  cursor:pointer;color:var(--white);font-size:16px;font-weight:500;
+  gap:10px;
+}
+.faq-icon{
+  min-width:28px;height:28px;
+  background:rgba(108,75,255,0.15);border:1px solid var(--purple);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:var(--purple2);font-size:16px;font-weight:700;transition:0.3s;
+}
+.faq-item.active .faq-icon{background:var(--purple);color:var(--white);transform:rotate(45deg);}
+.faq-answer{display:none;color:var(--muted);margin-top:12px;font-size:15px;line-height:1.7;padding-right:38px;}
+.faq-item.active .faq-answer{display:block;}
+
+@media(max-width:600px){
+  .faq-section{padding:80px 6%;}
+  .faq-question{font-size:15px;}
+}
+
+/* ══ CONTACT ══ */
+.contact-section{padding:130px 8%;background:linear-gradient(180deg,var(--grad-end) 0%,var(--grad-start) 100%);}
+.contact-container{
+  max-width:1050px;margin:auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;
+}
+.contact-left .section-title{text-align:left;}
+.contact-divider{width:70px;height:3px;background:var(--purple);margin:12px 0 22px;}
+.contact-left p{color:var(--muted);line-height:1.8;margin-bottom:24px;}
+.contact-info{display:flex;flex-direction:column;gap:14px;}
+.info-item{display:flex;align-items:center;gap:14px;}
+.info-icon{
+  min-width:42px;height:42px;background:rgba(108,75,255,0.12);
+  border:1px solid var(--border);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+}
+.info-item p{color:var(--muted);font-size:14px;}
+.info-item p strong{color:var(--white);display:block;font-size:15px;margin-bottom:2px;}
+.info-item p a{color:var(--muted);text-decoration:none;}
+.info-item p a:hover{color:var(--purple2);}
+
+.contact-form{background:rgba(255,255,255,0.05);padding:40px;border-radius:14px;border:1px solid rgba(255,255,255,0.07);}
+.contact-form input,
+.contact-form textarea{
+  width:100%;padding:13px 16px;margin-bottom:16px;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+  border-radius:8px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;
+  transition:border 0.3s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus{outline:none;border-color:var(--purple);}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{color:var(--muted);}
+.contact-form textarea{height:120px;resize:vertical;}
+.submit-btn{
+  width:100%;padding:14px;background:var(--purple);color:var(--white);
+  border:none;border-radius:8px;font-size:16px;font-weight:700;
+  cursor:pointer;font-family:'DM Sans',sans-serif;transition:0.3s;
+}
+.submit-btn:hover{background:var(--purple2);}
+
+@media(max-width:900px){
+  .contact-section{padding:80px 6%;}
+  .contact-container{grid-template-columns:1fr;gap:40px;text-align:center;}
+  .contact-left .section-title{text-align:center;}
+  .contact-divider{margin:12px auto 22px;}
+  .info-item{justify-content:center;}
+  .contact-form{padding:28px;}
+}
+
+/* ══ FOOTER ══ */
+.footer{
+  background:rgba(10,15,92,0.95);color:var(--muted);
+  padding:50px 8% 24px;
+  border-top:1px solid var(--border);
+}
+.footer-container{max-width:1100px;margin:auto;}
+.footer-top{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr;
+  gap:50px;margin-bottom:40px;
+}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--purple2);letter-spacing:2px;margin-bottom:12px;}
+.footer-logo span{color:var(--white);}
+.footer-desc{color:var(--muted);font-size:14px;line-height:1.7;max-width:280px;}
+.footer-col h4{color:var(--white);margin-bottom:16px;font-size:15px;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin:10px 0;}
+.footer-col ul li a{color:var(--muted);text-decoration:none;font-size:14px;transition:color 0.3s;}
+.footer-col ul li a:hover{color:var(--purple2);}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding-top:24px;text-align:center;
+  font-size:13px;color:var(--muted);
+}
+.footer-bottom span{color:var(--purple2);}
+
+@media(max-width:900px){
+  .footer-top{grid-template-columns:1fr;gap:30px;}
+  .footer-desc{max-width:100%;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<header class="navbar">
+  <div class="nav-container">
+    <div class="logo">CurtailmentIQ<span>Hub</span></div>
+    <nav id="navMenu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#process">How It Works</a>
+      <a href="#platform">Platform</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero-section" id="home">
+  <div class="hero-container">
+    <div class="hero-left">
+      <div class="hero-badge">AI-Powered Revenue Assurance & Grid Intelligence</div>
+      <h1>Turning Wasted Wind<br>into <span>Recoverable</span><br>Revenue</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-text">
+        CurtailmentIQ Hub is the UK's first AI-powered revenue assurance platform for renewable energy operators.
+        We convert complex SCADA telemetry into audit-grade financial evidence  recovering abandoned revenue
+        from grid curtailment with 94% baseline accuracy, sub-200ms latency, and tamper-evident forensics.
+        Built specifically for the UK's Elexon BSC and National Grid Grid Code.
+      </p>
+      <div class="hero-buttons">
+        <a href="#platform" class="btn-primary">Explore Platform</a>
+        <a href="#contact" class="btn-secondary">Request Demo</a>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <img src="curt.png" alt="CurtailmentIQ Hub  Wind Energy Revenue Assurance">
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section class="about-section" id="about">
+  <div class="about-container">
+    <div class="about-left">
+      <h2 class="section-title">About CurtailmentIQ Hub</h2>
+      <div class="about-divider"></div>
+      <p>
+        CurtailmentIQ Hub (NDFL  Nonconformance-to-Design Feedback Loop) is a transformative
+        revenue assurance and grid intelligence platform that bridges the "transparency gap" between
+        renewable energy generators and national grid operations across the United Kingdom.
+      </p>
+      <p>
+        By combining a high-fidelity digital twin, automated signal fusion, and a tamper-evident
+        provenance ledger, the system enables instant conversion of complex, high-frequency SCADA
+        telemetry into audit-grade financial evidence  empowering wind, solar, and storage operators
+        to quantify, attribute, and recover revenue lost to grid curtailment with unprecedented precision.
+      </p>
+      <p>
+        Unlike legacy observability tools that merely flag anomalies, CurtailmentIQ Hub operates in
+        true real time, processing sub-second data with under 200ms latency and cloud-native Lakehouse
+        architecture  the definitive assurance layer for the UK's zero-carbon power system transition.
+      </p>
+      <div class="about-features">
+        <div class="feature">94% Baseline Accuracy</div>
+        <div class="feature">Sub-200ms Real-Time Processing</div>
+        <div class="feature">Elexon BSC & Grid Code Compliant</div>
+        <div class="feature">Tamper-Evident Provenance Ledger</div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="founder-box">
+        <h3 class="founder-title">Founder</h3>
+        <div class="founder-divider"></div>
+        <p>
+          <strong>Nikhil Elikatte</strong> is the Founder and Lead Data Engineer of CurtailmentIQ Hub,
+          bringing over 5 years of hands-on experience in data engineering, scalable ETL development,
+          and AI systems across the banking, finance, and energy sectors.
+        </p>
+        <p>
+          Holding an <strong>MSc in Artificial Intelligence</strong> from Northumbria University and
+          certified as an <strong>Azure Data Engineer Associate</strong>, Nikhil architected the core
+          "Bifurcated Truth" engine and the ACID-compliant Lakehouse storage model powering the platform.
+        </p>
+        <p>
+          His expertise in Azure ETL and UK energy market data structures ensures that every pound
+          of recovered curtailment revenue is technically defensible, audit-grade, and aligned with
+          the UK's Net Zero 2050 transition mandate.
+        </p>
+        <a href="#contact" class="linkedin-btn">Get In Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROCESS ══ -->
+<section class="process-section" id="process">
+  <div class="process-container">
+    <h2 class="section-title">How CurtailmentIQ Hub Works</h2>
+    <div class="section-divider"></div>
+    <p class="section-sub">
+      CurtailmentIQ Hub transforms fragmented operational telemetry into audit-grade financial evidence 
+      from high-frequency signal ingestion to counterfactual baseline reconstruction, causal attribution,
+      and automated executable rebuttal generation for revenue recovery.
+    </p>
+    <div class="process-grid">
+
+      <div class="process-card">
+        <img src="curt1.png" class="process-img" alt="SCADA Signal Ingestion">
+        <div class="step-badge">01</div>
+        <h3>High-Frequency Signal Ingestion</h3>
+        <p>
+          The platform connects via edge-ready modules at the substation level, ingesting sub-second
+          SCADA telemetry, revenue-grade metering, and NESO settlement instructions into a unified
+          ACID-compliant Lakehouse  even during site-to-cloud connectivity failures.
+        </p>
+      </div>
+
+      <div class="process-card">
+        <img src="curt2.png" class="process-img" alt="Counterfactual Baseline">
+        <div class="step-badge">02</div>
+        <h3>Counterfactual Baseline Reconstruction</h3>
+        <p>
+          A physics-informed digital twin calculates exactly what each site "should have" generated,
+          using real-time meteorological data and design-intent performance curves. The AI achieves
+          94% accuracy in baseline reconstruction  providing defensible quantification of lost MWh.
+        </p>
+      </div>
+
+      <div class="process-card">
+        <img src="curt3.png" class="process-img" alt="Causal Attribution">
+        <div class="step-badge">03</div>
+        <h3>Probabilistic Causal Attribution</h3>
+        <p>
+          The "Bifurcated Truth" engine simultaneously calculates curtailment across Physical Operator
+          Reality and Market Settlement Truth. It distinguishes external grid constraints from internal
+          asset faults with forensic precision  solving the "Mimicry Problem" that causes claim refusals.
+        </p>
+      </div>
+
+      <div class="process-card">
+        <img src="curt4.png" class="process-img" alt="Executable Rebuttal">
+        <div class="step-badge">04</div>
+        <h3>Executable Rebuttal Evidence Packs</h3>
+        <p>
+          When the system detects a potential claim refusal, it triggers an "Executable Rebuttal Graph"
+           a structured logic tree with supporting evidence that automatically anticipates and addresses
+          common counterparty objections, turning abandoned revenue into secured financial recovery.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ PLATFORM ══ -->
+<section class="platform-section" id="platform">
+  <div class="platform-container">
+    <h2 class="section-title">The CurtailmentIQ Platform</h2>
+    <div class="section-divider"></div>
+    <p class="section-sub">
+      A suite of AI-powered forensic intelligence modules built specifically for UK renewable energy
+      operators  delivering audit-grade revenue assurance at institutional scale, from single-site
+      pilots to multi-gigawatt national portfolios.
+    </p>
+    <div class="platform-grid">
+
+      <div class="platform-card">
+        <img src="curt5.png" class="platform-img" alt="Digital Twin Engine">
+        <h3>CurtailmentIQ Digital Twin Engine</h3>
+        <p class="short-text">Physics-informed counterfactual generation baseline at 94% accuracy.</p>
+        <p class="more-text">
+          Uses physics-informed machine learning and real-time meteorological feeds to reconstruct
+          exactly what each asset "should have" produced during a grid instruction event. The engine
+          processes sub-second SCADA intervals, aligns them with 30-minute settlement periods, and
+          generates a versioned, tamper-evident baseline that is defensible for Elexon BSC disputes
+          and institutional audit. GAN-based synthetic data fills gaps for rare regional boundary faults.
+        </p>
+        <button class="learn-btn" onclick="toggleMore(this)">Learn More</button>
+      </div>
+
+      <div class="platform-card">
+        <img src="curt6.png" class="platform-img" alt="Bifurcated Truth Engine">
+        <h3>Bifurcated Truth Reconciliation Engine</h3>
+        <p class="short-text">Simultaneous reconciliation of physical reality vs. market settlement truth.</p>
+        <p class="more-text">
+          The first UK platform to simultaneously calculate curtailment across two independent domains:
+          Physical Operator Reality (SCADA) and Market Settlement Truth (Elexon). By treating the
+          divergence between these two domains as a machine-readable output, NDFL resolves "binning
+          disputes" that currently lead to millions in abandoned revenue  with under 200ms processing
+          latency for real-time operational visibility.
+        </p>
+        <button class="learn-btn" onclick="toggleMore(this)">Learn More</button>
+      </div>
+
+      <div class="platform-card">
+        <img src="curt7.png" class="platform-img" alt="Causal Attribution Engine">
+        <h3>Probabilistic Causal Attribution Engine</h3>
+        <p class="short-text">Forensic separation of grid constraints from internal asset faults.</p>
+        <p class="more-text">
+          Solves the "Mimicry Problem"  where internal asset faults visually mimic grid curtailment
+          in standard monitoring tools  by cross-referencing SCADA data with grid thermal limits,
+          Bid-Offer Acceptances, and B6 boundary events. Each loss event receives a probability score
+          across five driver types: Network Congestion, Balancing Actions, Market Rules, Asset Limitations,
+          and Weather  ensuring operators only claim for grid-imposed curtailment.
+        </p>
+        <button class="learn-btn" onclick="toggleMore(this)">Learn More</button>
+      </div>
+
+      <div class="platform-card">
+        <img src="curt8.png" class="platform-img" alt="Edge AI Module">
+        <h3>Offline-Ready Edge AI Normalisation</h3>
+        <p class="short-text">Continuous data capture at remote substations with limited connectivity.</p>
+        <p class="more-text">
+          Designed for critical national infrastructure, the Edge AI module encrypts and processes
+          telemetry locally at the substation  ensuring a continuous, tamper-evident audit trail
+          even during site-to-cloud connectivity failures in remote rural or offshore environments.
+          Fully compliant with the UK Cyber Security and Resilience (CSR) Bill and ISO/IEC 27001,
+          providing 95%+ data capture functionality in low-bandwidth settings.
+        </p>
+        <button class="learn-btn" onclick="toggleMore(this)">Learn More</button>
+      </div>
+
+      <div class="platform-card">
+        <img src="curt9.png" class="platform-img" alt="Evidence Pack Compiler">
+        <h3>Executable Rebuttal Evidence Pack Compiler</h3>
+        <p class="short-text">Automated dispute-ready proof artefacts for settlement claims.</p>
+        <p class="more-text">
+          Generates comprehensive "Evidence Packs"  structured, audit-grade PDF/JSON artefacts 
+          that automatically anticipate and answer grid operator objections regarding alternate baselines,
+          interval boundaries, or asset faults. Replaces expensive manual forensic consultancies
+          (£15,000+ per dispute) with millisecond-generation, structured rebuttal logic that is
+          resistant to administrative refusal. Includes customizable modules for CfD, RO, and PPA structures.
+        </p>
+        <button class="learn-btn" onclick="toggleMore(this)">Learn More</button>
+      </div>
+
+      <div class="platform-card">
+        <img src="curt10.png" class="platform-img" alt="API Integration Suite">
+        <h3>Lakehouse Integration API Suite</h3>
+        <p class="short-text">Seamless integration with SCADA historians, trading desks, and settlement portals.</p>
+        <p class="more-text">
+          RESTful and WebSocket APIs provide programmable access to the CurtailmentIQ forensics engine,
+          enabling direct integration with existing SCADA historians (OSIsoft PI), Azure Data Factory
+          pipelines, National Grid NESO digital portals, and Elexon Kinnect settlement systems.
+          Modular design allows NDFL to act as an "Assurance Layer" that plugs into any existing
+          energy estate  creating a secondary licensing revenue stream for trading desk API integrations.
+        </p>
+        <button class="learn-btn" onclick="toggleMore(this)">Learn More</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ══ -->
+<section class="pricing-section" id="pricing">
+  <div class="pricing-container">
+    <h2 class="section-title">Simple, Transparent Pricing</h2>
+    <div class="section-divider"></div>
+    <p class="section-sub">
+      Priced as a fraction of manual forensic consultancy costs  delivering 5x to 10x ROI
+      on recovered curtailment revenue within a single high-wind event. Scalable from single-site
+      pilots to multi-gigawatt institutional portfolios.
+    </p>
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <h3>Starter</h3>
+        <div class="price-amount">£3,000</div>
+        <div class="price-period">per month · portfolios ≤ 100 MW</div>
+        <ul>
+          <li>Core CurtailmentIQ digital twin engine</li>
+          <li>Up to 2 asset sites included</li>
+          <li>10 dispute-ready evidence packs</li>
+          <li>Real-time operations dashboard</li>
+          <li>Elexon BSC-aligned data processing</li>
+          <li>Email & portal support</li>
+        </ul>
+        <a href="#contact" class="price-btn">Get Started</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="popular-badge">MOST POPULAR</div>
+        <h3>Growth</h3>
+        <div class="price-amount">£10,000</div>
+        <div class="price-period">per month · portfolios ≤ 500 MW</div>
+        <ul>
+          <li>Everything in Starter</li>
+          <li>Up to 10 asset sites included</li>
+          <li>50 dispute-ready evidence packs</li>
+          <li>Automated triage & probability scoring</li>
+          <li>Bifurcated Truth reconciliation engine</li>
+          <li>Priority technical support</li>
+        </ul>
+        <a href="#contact" class="price-btn">Get Started</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Portfolio</h3>
+        <div class="price-amount">£30,000</div>
+        <div class="price-period">per month · portfolios ≤ 2 GW</div>
+        <ul>
+          <li>Everything in Growth</li>
+          <li>Up to 50 asset sites included</li>
+          <li>200 evidence packs included</li>
+          <li>Hidden Constraint Corridor intelligence</li>
+          <li>Edge AI offline deployment</li>
+          <li>Dedicated account manager</li>
+        </ul>
+        <a href="#contact" class="price-btn">Get Started</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="faq-section" id="faq">
+  <div class="faq-container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="section-divider"></div>
+    <p class="section-sub">
+      Everything you need to know about CurtailmentIQ Hub before getting started.
+    </p>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>What is CurtailmentIQ Hub and who is it for?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">
+        CurtailmentIQ Hub (NDFL) is an AI-powered revenue assurance and grid intelligence platform
+        designed for UK renewable energy operators  onshore and offshore wind developers, solar PV
+        portfolios, battery storage operators, institutional YieldCos, and national utilities. It
+        converts high-frequency SCADA telemetry into audit-grade financial evidence, enabling operators
+        to recover revenue lost to grid curtailment that is currently written off as an unavoidable cost.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Do I need to replace my existing SCADA or settlement systems?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">
+        No. CurtailmentIQ Hub is designed to work alongside your existing SCADA historian (e.g.,
+        OSIsoft PI), Azure Data Factory pipelines, and Elexon settlement portals. It acts as a
+        complementary "Assurance Layer"  integrating via secure RESTful and WebSocket APIs without
+        disrupting your current operational workflow or requiring new capital expenditure at the site level.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Is CurtailmentIQ Hub compliant with Elexon BSC and National Grid Grid Code?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">
+        Yes. CurtailmentIQ Hub is mapped to the latest Great Britain energy market rules including
+        Elexon BSC modifications (P499 and P497), National Grid NESO Grid Code (including GC0166
+        for Dynamic Parameters), and the UK Balancing Mechanism. All data is processed in Azure UK
+        South data centres under UK GDPR, ISO/IEC 27001, and Cyber Essentials Plus 2026 standards 
+        ensuring institutional bankability for project finance lenders and YieldCos.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>What is the "Mimicry Problem" and how does the platform solve it?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">
+        The "Mimicry Problem" occurs when internal asset faults  such as inverter clipping, high-wind
+        cut-out, or maintenance shutdowns  visually mimic external grid curtailment in standard
+        monitoring tools. Grid operators use this ambiguity to refuse compensation claims. CurtailmentIQ
+        Hub's Probabilistic Causal Attribution Engine cross-references SCADA data with grid thermal
+        limits and Bid-Offer Acceptances, assigning a confidence score to each driver type  ensuring
+        operators only claim for grid-imposed curtailment and providing forensic-grade evidence to
+        counter operator objections.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>How long does onboarding take?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">
+        Most institutional clients are fully operational within 2–4 weeks. Onboarding includes
+        SCADA connector configuration (£15,000 per site, one-time), Azure Lakehouse environment
+        setup, site-specific digital twin calibration, and a testing phase against historical grid
+        events  all supported by our technical team. No in-house data engineering expertise is
+        required on your side.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>What ROI can I expect from CurtailmentIQ Hub?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">
+        Operators typically achieve a 5x to 10x Return on Investment. The platform replaces expensive
+        manual forensic consultancies (£15,000+ per dispute) with automated, millisecond-generation
+        evidence packs. For a standard growth-tier client with a 300 MW portfolio, identifying even
+        one misattributed curtailment event per quarter will typically recover more than the annual
+        subscription cost. Our 8% value-based success fee model also aligns our revenue directly
+        with your financial recovery  making the platform a "no-risk" adoption for distressed energy assets.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Does CurtailmentIQ Hub work in remote or offshore environments?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-answer">
+        Yes. Our Offline-Ready Edge AI Normalisation module is specifically designed for remote rural
+        substations and offshore platforms with limited satellite connectivity. The system encrypts and
+        processes telemetry locally at the substation, maintaining over 95% data capture functionality
+        in low-bandwidth conditions. Once connectivity is restored, data synchronises automatically
+        with the cloud-based Lakehouse  ensuring no "evidence gaps" occur during extreme weather
+        events that are typically the most valuable curtailment periods.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section class="contact-section" id="contact">
+  <div class="contact-container">
+
+    <div class="contact-left">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-divider"></div>
+      <p>
+        Ready to recover your abandoned curtailment revenue? Book a free forensic demo,
+        request a pilot using your historical SCADA data, or speak to Nikhil directly.
+        Our team is UK-based and ready to help.
+      </p>
+      <div class="contact-info">
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <p><strong>Location</strong>United Kingdom</p>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">✉️</div>
+          <p><strong>Email</strong><a href="mailto:info@curtailmentiqhub.com">info@curtailmentiqhub.com</a></p>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">⚡</div>
+          <p><strong>Market Focus</strong>UK Renewable Energy Fleet  Net Zero 2050</p>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🕐</div>
+          <p><strong>Response Time</strong>Within 24 hours on business days</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <input type="text" placeholder="Your Full Name">
+      <input type="email" placeholder="Email Address">
+      <input type="text" placeholder="Organisation / Asset Portfolio Name">
+      <input type="text" placeholder="Phone Number (optional)">
+      <textarea placeholder="Tell us about your portfolio  total MW capacity, asset types (wind/solar/BESS), current curtailment challenges, and what you'd like to recover..."></textarea>
+      <button class="submit-btn">Send Message →</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">CurtailmentIQ<span>Hub</span></div>
+        <p class="footer-desc">
+          The UK's first AI-powered Revenue Assurance & Grid Intelligence Platform  converting
+          wasted wind into recoverable financial assets. Built for UK Net Zero 2050 &amp;
+          NESO Grid Code Compliance. A proprietary solution by Feedback Loop.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#platform">Digital Twin Engine</a></li>
+          <li><a href="#platform">Bifurcated Truth Engine</a></li>
+          <li><a href="#platform">Causal Attribution</a></li>
+          <li><a href="#platform">Edge AI Module</a></li>
+          <li><a href="#platform">API Integration Suite</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#process">How It Works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 <span>CurtailmentIQ Hub</span>. All rights reserved. UK Registered. GDPR Compliant. Elexon BSC Aligned.
+    </div>
+  </div>
+</footer>
+
+<!-- ══ SCRIPTS ══ -->
+<script>
+// Navbar toggle
+const toggle = document.getElementById("menuToggle");
+const menu = document.getElementById("navMenu");
+toggle.addEventListener("click",()=>{ menu.classList.toggle("active"); });
+document.querySelectorAll("#navMenu a").forEach(link=>{
+  link.addEventListener("click",()=>{ menu.classList.remove("active"); });
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+  anchor.addEventListener("click",function(e){
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if(target){ target.scrollIntoView({behavior:"smooth"}); }
+  });
+});
+
+// FAQ accordion
+document.querySelectorAll(".faq-question").forEach(q=>{
+  q.addEventListener("click",()=>{
+    const item = q.parentElement;
+    const wasActive = item.classList.contains("active");
+    document.querySelectorAll(".faq-item").forEach(i=>i.classList.remove("active"));
+    if(!wasActive){ item.classList.add("active"); }
+  });
+});
+
+// Platform learn more toggle
+function toggleMore(btn){
+  const card = btn.closest(".platform-card");
+  const more = card.querySelector(".more-text");
+  const short = card.querySelector(".short-text");
+  if(more.style.display === "block"){
+    more.style.display = "none";
+    short.style.display = "block";
+    btn.textContent = "Learn More";
+  } else {
+    more.style.display = "block";
+    short.style.display = "none";
+    btn.textContent = "Show Less";
+  }
+}
+</script>
+
+</body>
+</html>
