@@ -880,7 +880,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--grad-end);color:var(--whi
         </div>
         <div class="info-item">
           <div class="info-icon">✉️</div>
-          <p><strong>Email</strong><a href="mailto:info@curtailmentiqhub.com">info@curtailmentiqhub.com</a></p>
+          <p><strong>Email</strong><a href="mailto:curtailmentiqhubuk@outlook.com">curtailmentiqhubuk@outlook.com</a></p>
         </div>
         <div class="info-item">
           <div class="info-icon">⚡</div>
@@ -893,14 +893,23 @@ body{font-family:'DM Sans',sans-serif;background:var(--grad-end);color:var(--whi
       </div>
     </div>
 
-    <div class="contact-form">
-      <input type="text" placeholder="Your Full Name">
-      <input type="email" placeholder="Email Address">
-      <input type="text" placeholder="Organisation / Asset Portfolio Name">
-      <input type="text" placeholder="Phone Number (optional)">
-      <textarea placeholder="Tell us about your portfolio  total MW capacity, asset types (wind/solar/BESS), current curtailment challenges, and what you'd like to recover..."></textarea>
-      <button class="submit-btn">Send Message →</button>
-    </div>
+<div class="contact-form">
+  <form action="https://api.web3forms.com/submit" method="POST">
+
+    <!-- Access Key -->
+    <input type="hidden" name="access_key" value="a433cc66-f7cc-4111-9f53-19675d4fa099">
+
+    <input type="text" name="name" placeholder="Your Full Name" required>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="text" name="company" placeholder="Organisation / Asset Portfolio Name">
+    <input type="text" name="phone" placeholder="Phone Number (optional)">
+    
+    <textarea name="message" placeholder="Tell us about your portfolio — total MW capacity, asset types (wind/solar/BESS), current curtailment challenges..." required></textarea>
+
+    <button type="submit" class="submit-btn">Send Message →</button>
+
+  </form>
+</div>
 
   </div>
 </section>
